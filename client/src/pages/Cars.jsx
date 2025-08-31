@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "../components/Title.jsx";
 import CarCard from "../components/CarCard.jsx";
-import { assets, dummyCarData } from "../assets/assets";
+import { assets} from "../assets/assets";
 import { useSearchParams } from "react-router-dom";
 import { useAppContext } from "../context/AppContext.jsx";
 import toast from "react-hot-toast";

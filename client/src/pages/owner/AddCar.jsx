@@ -54,7 +54,7 @@ const AddCar = () => {
       }
     } catch (error) {
       toast.error(error.message);
-    }finally{
+    } finally {
       setIsLoading(false);
     }
   };
@@ -213,10 +213,10 @@ const AddCar = () => {
             className="px-3 py-2 mt-1 border border-borderColor rounded-md outline-none"
           >
             <option value="">Select a location</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Houston">Houston</option>
-            <option value="Chicago">Chicago</option>
+            <option value="New Delhi">New Delhi</option>
+            <option value="Gurugram">Gurugram</option>
+            <option value="Meerut">Meerut</option>
+            <option value="Noida">Noida</option>
           </select>
         </div>
 
@@ -236,7 +236,7 @@ const AddCar = () => {
 
         <button className="flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary text-white rounded-md font-medium w-max cursor-pointer">
           <img src={assets.tick_icon} alt="" />
-          {isLoading ? "Listing...":"List Your Car"}
+          {isLoading ? "Listing..." : "List Your Car"}
         </button>
       </form>
     </div>
