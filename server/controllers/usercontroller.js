@@ -38,11 +38,11 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return json({ success: false, message: "User not found" });
+      return res.json({ success: false, message: "User not found" });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return json({ success: false, message: "incorrect password" });
+      return res.json({ success: false, message: "incorrect password" });
     }
     const token = generateToken(user._id.toString());
     res.json({ success: true, token });
