@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "../components/Title.jsx";
 import CarCard from "../components/CarCard.jsx";
-import { assets} from "../assets/assets";
+import { assets } from "../assets/assets";
 import { useSearchParams } from "react-router-dom";
 import { useAppContext } from "../context/AppContext.jsx";
 import toast from "react-hot-toast";
@@ -39,22 +39,19 @@ const Cars = () => {
   };
 
   const searchCarAvailablity = async () => {
-    const { data } = await axios.post("/api/bookings/check-availablity", {
+    const { data } = await axios.post("/api/bookings/check-availability", {
       location: pickupLocation,
       pickupDate,
       returnDate,
     });
-    if (data.success) {
-      setFilteredCars(data.availableCars);
-      if (data.availableCars.length === 0) {
-        toast("No cars available");
-      }
-      return null;
+    if (!data.availableCars || data.availableCars.length === 0) {
+      toast("No cars available");
     }
+    setFilteredCars(data.availableCars || []);
   };
   useEffect(() => {
     isSearchData && searchCarAvailablity();
-  }, []);
+  }, [pickupLocation, pickupDate, returnDate]);
 
   useEffect(() => {
     cars.length > 0 && !isSearchData && applyFilter();
